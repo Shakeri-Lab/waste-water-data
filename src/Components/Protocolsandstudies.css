@@ -1,0 +1,15 @@
+.protocol-button-container {
+    display: flex;
+    flex-direction: row;
+    margin: 1vw;
+    justify-content: center;
+}
+
+.protocol-button {
+    display: flex;
+    flex-direction: column;
+    background-color: #e8ecea; 
+    border-radius: 5px; 
+    margin: 1vw;
+    width: 20vw;
+}

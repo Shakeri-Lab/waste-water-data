@@ -1,0 +1,50 @@
+.map-chart-container {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: flex-start; */
+    justify-content: center; 
+    margin: 20px;
+}
+
+.map-view-container {
+    border-radius: 8px;
+}
+
+.chart-view-container {
+    background-color: whitesmoke;
+    margin-left: 20px; 
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.bottom-legend {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.toggle-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.bottom-chart-view-container {
+    display: flex;
+    flex-direction: column; 
+    background-color: whitesmoke;
+    margin: 20px; 
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.chart-row {
+    display: flex; 
+    flex-direction: row;
+    justify-content: left; 
+}
+
+.chart-box {
+    display: flex;
+    flex-direction: column;
+}
