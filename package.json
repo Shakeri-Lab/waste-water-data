@@ -19,7 +19,8 @@
     "react-switch": "^5.0.1",
     "recharts": "^1.8.5",
     "tableau-react": "^1.2.2",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "xlsx": "^0.16.9"
   },
   "scripts": {
     "start": "react-scripts start",

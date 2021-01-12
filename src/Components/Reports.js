@@ -115,7 +115,7 @@ const Reports = () => {
     const [showChart, setShowChart] = useState(null);
 
     const DataFormaterX = (date) => {
-        return date.split(",")[0]; 
+        return date.split(",")[0];
     }
 
     const DataFormaterY = (number) => {
@@ -341,7 +341,7 @@ const Reports = () => {
                     <BarChart width={window.innerWidth*0.40} height={175} data={chartData1b}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                        <YAxis tickFormatter={DataFormaterY}>
+                        <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                         <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
@@ -376,7 +376,7 @@ const Reports = () => {
                     <LineChart width={window.innerWidth*0.40} height={175} data={chartData1b}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                        <YAxis tickFormatter={DataFormaterY}>
+                        <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                         <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
@@ -411,7 +411,7 @@ const Reports = () => {
                     <BarChart width={window.innerWidth*0.40} height={175} data={chartData2b}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                        <YAxis tickFormatter={DataFormaterY}>
+                        <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                         <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
@@ -446,7 +446,7 @@ const Reports = () => {
                     <LineChart width={window.innerWidth*0.40} height={175} data={chartData2b}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                        <YAxis tickFormatter={DataFormaterY}>
+                        <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                         <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
@@ -523,7 +523,7 @@ const Reports = () => {
                         <BarChart width={window.innerWidth*0.20} height={175} data={chartData1b}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                            <YAxis tickFormatter={DataFormaterY}>
+                            <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                             <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
                             </YAxis>
                             <Tooltip />
@@ -536,7 +536,7 @@ const Reports = () => {
                         <BarChart width={window.innerWidth*0.20} height={175} data={chartData2b}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                            <YAxis tickFormatter={DataFormaterY}>
+                            <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                             {/* <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/> */}
                             </YAxis>
                             <Tooltip />
@@ -549,7 +549,7 @@ const Reports = () => {
                         <BarChart width={window.innerWidth*0.20} height={175} data={chartData3b}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                            <YAxis tickFormatter={DataFormaterY}>
+                            <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                             {/* <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/> */}
                             </YAxis>
                             <Tooltip />
@@ -562,7 +562,7 @@ const Reports = () => {
                         <BarChart width={window.innerWidth*0.20} height={175} data={chartData4b}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                            <YAxis tickFormatter={DataFormaterY}>
+                            <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                             {/* <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/> */}
                             </YAxis>
                             <Tooltip />
@@ -638,7 +638,7 @@ const Reports = () => {
                         <LineChart width={window.innerWidth*0.20} height={175} data={chartData1b}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                            <YAxis tickFormatter={DataFormaterY}>
+                            <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                             <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
                             </YAxis>
                             <Tooltip />
@@ -651,7 +651,7 @@ const Reports = () => {
                         <LineChart width={window.innerWidth*0.20} height={175} data={chartData2b}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                            <YAxis tickFormatter={DataFormaterY}>
+                            <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                             </YAxis>
                             <Tooltip />
                             <Line dataKey="cases" stroke="#000000" dot={false}/>
@@ -663,7 +663,7 @@ const Reports = () => {
                         <LineChart width={window.innerWidth*0.20} height={175} data={chartData3b}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                            <YAxis tickFormatter={DataFormaterY}>
+                            <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                             </YAxis>
                             <Tooltip />
                             <Line dataKey="cases" stroke="#000000" dot={false}/>
@@ -675,7 +675,7 @@ const Reports = () => {
                         <LineChart width={window.innerWidth*0.20} height={175} data={chartData4b}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                            <YAxis tickFormatter={DataFormaterY}>
+                            <YAxis tickFormatter={DataFormaterY}  domain={[0, 'dataMax']}>
                             </YAxis>
                             <Tooltip />
                             <Line dataKey="cases" stroke="#000000" dot={false}/>
@@ -997,7 +997,7 @@ const Reports = () => {
                     <BarChart width={window.innerWidth*0.40} height={175} data={chartData3b}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                        <YAxis tickFormatter={DataFormaterY}>
+                        <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                         <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
@@ -1032,7 +1032,7 @@ const Reports = () => {
                     <LineChart width={window.innerWidth*0.40} height={175} data={chartData3b}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                        <YAxis tickFormatter={DataFormaterY}>
+                        <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                         <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
@@ -1067,7 +1067,7 @@ const Reports = () => {
                     <BarChart width={window.innerWidth*0.40} height={175} data={chartData4b}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                        <YAxis tickFormatter={DataFormaterY}>
+                        <YAxis tickFormatter={DataFormaterY}  domain={[0, 'dataMax']}>
                         <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
@@ -1102,7 +1102,7 @@ const Reports = () => {
                     <LineChart width={window.innerWidth*0.40} height={175} data={chartData4b}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                        <YAxis tickFormatter={DataFormaterY}>
+                        <YAxis tickFormatter={DataFormaterY}  domain={[0, 'dataMax']}>
                         <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
@@ -1179,7 +1179,7 @@ const Reports = () => {
                         <BarChart width={window.innerWidth*0.20} height={175} data={chartData1b}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                            <YAxis tickFormatter={DataFormaterY}>
+                            <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                             <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
                             </YAxis>
                             <Tooltip />
@@ -1192,7 +1192,7 @@ const Reports = () => {
                         <BarChart width={window.innerWidth*0.20} height={175} data={chartData2b}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                            <YAxis tickFormatter={DataFormaterY}>
+                            <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                             {/* <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/> */}
                             </YAxis>
                             <Tooltip />
@@ -1205,7 +1205,7 @@ const Reports = () => {
                         <BarChart width={window.innerWidth*0.20} height={175} data={chartData3b}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                            <YAxis tickFormatter={DataFormaterY}>
+                            <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                             {/* <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/> */}
                             </YAxis>
                             <Tooltip />
@@ -1218,7 +1218,7 @@ const Reports = () => {
                         <BarChart width={window.innerWidth*0.20} height={175} data={chartData4b}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                            <YAxis tickFormatter={DataFormaterY}>
+                            <YAxis tickFormatter={DataFormaterY}  domain={[0, 'dataMax']}>
                             {/* <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/> */}
                             </YAxis>
                             <Tooltip />
@@ -1294,7 +1294,7 @@ const Reports = () => {
                         <LineChart width={window.innerWidth*0.20} height={175} data={chartData1b}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                            <YAxis tickFormatter={DataFormaterY}>
+                            <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                             <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
                             </YAxis>
                             <Tooltip />
@@ -1307,7 +1307,7 @@ const Reports = () => {
                         <LineChart width={window.innerWidth*0.20} height={175} data={chartData2b}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                            <YAxis tickFormatter={DataFormaterY}>
+                            <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                             </YAxis>
                             <Tooltip />
                             <Line dataKey="cases" stroke="#000000" dot={false}/>
@@ -1319,7 +1319,7 @@ const Reports = () => {
                         <LineChart width={window.innerWidth*0.20} height={175} data={chartData3b}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                            <YAxis tickFormatter={DataFormaterY}>
+                            <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                             </YAxis>
                             <Tooltip />
                             <Line dataKey="cases" stroke="#000000" dot={false}/>
@@ -1331,7 +1331,7 @@ const Reports = () => {
                         <LineChart width={window.innerWidth*0.20} height={175} data={chartData4b}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                            <YAxis tickFormatter={DataFormaterY}>
+                            <YAxis tickFormatter={DataFormaterY}  domain={[0, 'dataMax']}>
                             </YAxis>
                             <Tooltip />
                             <Line dataKey="cases" stroke="#000000" dot={false}/>
