@@ -342,7 +342,7 @@ const Reports = () => {
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
                         <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
-                        <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
+                        <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
                         <Bar dataKey="cases" fill="#000000"/>
@@ -377,7 +377,7 @@ const Reports = () => {
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
                         <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
-                        <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
+                        <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
                         <Line dataKey="cases" stroke="#000000" dot={false}/>
@@ -412,7 +412,7 @@ const Reports = () => {
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
                         <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
-                        <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
+                        <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
                         <Bar dataKey="cases" fill="#000000"/>
@@ -447,7 +447,7 @@ const Reports = () => {
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
                         <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
-                        <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
+                        <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
                         <Line dataKey="cases" stroke="#000000" dot={false}/>
@@ -524,7 +524,7 @@ const Reports = () => {
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
                             <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
-                            <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
+                            <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                             </YAxis>
                             <Tooltip />
                             <Bar dataKey="cases" fill="#000000"/>
@@ -639,7 +639,7 @@ const Reports = () => {
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
                             <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
-                            <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
+                            <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                             </YAxis>
                             <Tooltip />
                             <Line dataKey="cases" stroke="#000000" dot={false}/>
@@ -998,7 +998,7 @@ const Reports = () => {
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
                         <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
-                        <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
+                        <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
                         <Bar dataKey="cases" fill="#000000"/>
@@ -1033,7 +1033,7 @@ const Reports = () => {
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
                         <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
-                        <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
+                        <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
                         <Line dataKey="cases" stroke="#000000" dot={false}/>
@@ -1068,7 +1068,7 @@ const Reports = () => {
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
                         <YAxis tickFormatter={DataFormaterY}  domain={[0, 'dataMax']}>
-                        <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
+                        <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
                         <Bar dataKey="cases" fill="#000000"/>
@@ -1103,7 +1103,7 @@ const Reports = () => {
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
                         <YAxis tickFormatter={DataFormaterY}  domain={[0, 'dataMax']}>
-                        <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
+                        <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
                         <Line dataKey="cases" stroke="#000000" dot={false}/>
@@ -1180,7 +1180,7 @@ const Reports = () => {
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
                             <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
-                            <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
+                            <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                             </YAxis>
                             <Tooltip />
                             <Bar dataKey="cases" fill="#000000"/>
@@ -1295,7 +1295,7 @@ const Reports = () => {
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
                             <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
-                            <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/>
+                            <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                             </YAxis>
                             <Tooltip />
                             <Line dataKey="cases" stroke="#000000" dot={false}/>
@@ -1348,15 +1348,7 @@ const Reports = () => {
                             <p>Predicted case data based on wastewater SARS-CoV-2 concentrations</p>
                         </div>
             </div>}
-
-           
            </div>}
-           <p
-           style = {{cursor: "pointer", color: "#3a8ee9"}}
-           onClick={() => {
-            alert("Click a location on the map in order to view its data report. To switch between the Charlottesville data and Hampton Roads data, use the tabs provided. Use the toggle button to switch between a line graph or bar graph.")
-           }}
-           >Need Help? Click here</p>
         </div>
     )
 }
