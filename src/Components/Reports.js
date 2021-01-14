@@ -1,10 +1,12 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import Geocoder from 'react-map-gl-geocoder';
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import MapGL, {NavigationControl, Marker, Popup, Layer, Source} from "react-map-gl";
 import { BsFillCircleFill, BsFillBarChartFill } from "react-icons/bs";
 import { GiWaterRecycling } from "react-icons/gi";
 import { BiLineChart } from "react-icons/bi";
+import { RiInformationLine } from "react-icons/ri";
+import axios from "axios";
 
 //regions
 import CharlottesvilleLimits from './Charlottesville.json';
@@ -19,10 +21,104 @@ import NewportNewsLimits from './NewportNews.json';
 // import Data2 from './Data2.json';
 import './Reports.css';
 import { BarChart, LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Bar, Line, Label } from "recharts"; 
-import { chartData1a, chartData1b, chartData2a, chartData2b, chartData3a, chartData3b, chartData4a, chartData4b } from "./ChartData.js"; 
+import { chartData1a, chartData2a, chartData3a, chartData4a } from "./ChartData.js"; 
 import Switch from "react-switch";
 
+var dateFormat = require("dateformat");
+
 const Reports = () => {
+    //automated data collection from vdh
+    let[list1b, setList1b] = useState([])
+    let[list3b, setList3b] = useState([])
+    let[list4b, setList4b] = useState([])
+
+    useEffect(() => {
+        axios
+        .get(
+          `https://data.virginia.gov/resource/bre9-aqqr.json?locality=Charlottesville`
+        )
+        .then(res => {
+          const values = Object.values(res.data);
+         // alert(JSON.stringify(values))
+         setList1b(values);
+        });
+    }, [])
+
+    useEffect(() => {
+        axios
+        .get(
+          `https://data.virginia.gov/resource/bre9-aqqr.json?locality=Portsmouth`
+        )
+        .then(res => {
+          const values = Object.values(res.data);
+         // alert(JSON.stringify(values))
+         setList3b(values);
+        });
+    }, [])
+
+    useEffect(() => {
+        axios
+        .get(
+          `https://data.virginia.gov/resource/bre9-aqqr.json?locality=Newport%20News`
+        )
+        .then(res => {
+          const values = Object.values(res.data);
+         // alert(JSON.stringify(values))
+         setList4b(values);
+        });
+    }, [])
+
+    const object = list1b
+    const object3b = list3b
+    const object4b = list4b
+
+    var i;
+    for (i = 0; i < object.length; i++){
+      var x = object[i].report_date
+      object[i].report_date = new Date(x)
+    }
+
+    object.sort((a, b) => a.report_date - b.report_date)
+    var chartData1b = []
+    var chartData2b = chartData1b
+
+    var j;
+    for (j = 1; j < object.length; j++){
+      var x = object[j].total_cases - object[j-1].total_cases
+      chartData1b.push({"date": dateFormat(object[j].report_date, "mmm dd, yyyy"), "cases reported": x, "predicted cases": 0})
+    }
+
+    var k;
+    for (k = 0; k < object3b.length; k++){
+      var x = object3b[k].report_date
+      object3b[k].report_date = new Date(x)
+    }
+
+    object3b.sort((a, b) => a.report_date - b.report_date)
+    var chartData3b = []
+
+    var l;
+    for (l = 1; l < object3b.length; l++){
+      var x = object3b[l].total_cases - object3b[l-1].total_cases
+      chartData3b.push({"date": dateFormat(object3b[l].report_date, "mmm dd, yyyy"), "cases reported": x, "predicted cases": 0})
+    }
+
+    var m;
+    for (m = 0; m < object4b.length; m++){
+      var x = object4b[m].report_date
+      object4b[m].report_date = new Date(x)
+    }
+
+    object4b.sort((a, b) => a.report_date - b.report_date)
+    var chartData4b = []
+
+    var n;
+    for (n = 1; n < object4b.length; n++){
+      var x = object4b[n].total_cases - object4b[n-1].total_cases
+      chartData4b.push({"date": dateFormat(object4b[n].report_date, "mmm dd, yyyy"), "cases reported": x, "predicted cases": 0})
+    }
+
+
     //cvill
     const [viewport, setViewport] = useState({
         latitude: 38.031479,
@@ -341,11 +437,11 @@ const Reports = () => {
                     <BarChart width={window.innerWidth*0.40} height={175} data={chartData1b}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={DataFormaterX}/>
-                        <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
+                        <YAxis  domain={[0, 'dataMax']} tickFormatter={DataFormaterY}>
                         <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
-                        <Bar dataKey="cases" fill="#000000"/>
+                        <Bar dataKey="cases reported" fill="#000000"/>
                         <Bar dataKey="predicted cases" fill="#aaacab"/>
                     </BarChart>
                     </div>
@@ -380,7 +476,7 @@ const Reports = () => {
                         <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
-                        <Line dataKey="cases" stroke="#000000" dot={false}/>
+                        <Line dataKey="cases reported" stroke="#000000" dot={false}/>
                         <Line dataKey="predicted cases" stroke="#aaacab" dot={false}/>
                     </LineChart>
                     </div>
@@ -415,7 +511,7 @@ const Reports = () => {
                         <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
-                        <Bar dataKey="cases" fill="#000000"/>
+                        <Bar dataKey="cases reported" fill="#000000"/>
                         <Bar dataKey="predicted cases" fill="#aaacab"/>
                     </BarChart>
                     </div>
@@ -450,7 +546,7 @@ const Reports = () => {
                         <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
-                        <Line dataKey="cases" stroke="#000000" dot={false}/>
+                        <Line dataKey="cases reported" stroke="#000000" dot={false}/>
                         <Line dataKey="predicted cases" stroke="#aaacab" dot={false}/>
                     </LineChart>
                     </div>
@@ -527,7 +623,7 @@ const Reports = () => {
                             <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                             </YAxis>
                             <Tooltip />
-                            <Bar dataKey="cases" fill="#000000"/>
+                            <Bar dataKey="cases reported" fill="#000000"/>
                             <Bar dataKey="predicted cases" fill="#aaacab"/>
                         </BarChart>
                     </div>
@@ -540,7 +636,7 @@ const Reports = () => {
                             {/* <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/> */}
                             </YAxis>
                             <Tooltip />
-                            <Bar dataKey="cases" fill="#000000"/>
+                            <Bar dataKey="cases reported" fill="#000000"/>
                             <Bar dataKey="predicted cases" fill="#aaacab"/>
                         </BarChart>
                     </div>
@@ -553,7 +649,7 @@ const Reports = () => {
                             {/* <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/> */}
                             </YAxis>
                             <Tooltip />
-                            <Bar dataKey="cases" fill="#000000"/>
+                            <Bar dataKey="cases reported" fill="#000000"/>
                             <Bar dataKey="predicted cases" fill="#aaacab"/>
                         </BarChart>
                     </div>
@@ -566,7 +662,7 @@ const Reports = () => {
                             {/* <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/> */}
                             </YAxis>
                             <Tooltip />
-                            <Bar dataKey="cases" fill="#000000"/>
+                            <Bar dataKey="cases reported" fill="#000000"/>
                             <Bar dataKey="predicted cases" fill="#aaacab"/>
                         </BarChart>
                     </div>
@@ -642,7 +738,7 @@ const Reports = () => {
                             <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                             </YAxis>
                             <Tooltip />
-                            <Line dataKey="cases" stroke="#000000" dot={false}/>
+                            <Line dataKey="cases reported" stroke="#000000" dot={false}/>
                             <Line dataKey="predicted cases" stroke="#aaacab" dot={false}/>
                         </LineChart>
                     </div>
@@ -654,7 +750,7 @@ const Reports = () => {
                             <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                             </YAxis>
                             <Tooltip />
-                            <Line dataKey="cases" stroke="#000000" dot={false}/>
+                            <Line dataKey="cases reported" stroke="#000000" dot={false}/>
                             <Line dataKey="predicted cases" stroke="#aaacab" dot={false}/>
                         </LineChart>
                     </div>
@@ -666,7 +762,7 @@ const Reports = () => {
                             <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                             </YAxis>
                             <Tooltip />
-                            <Line dataKey="cases" stroke="#000000" dot={false}/>
+                            <Line dataKey="cases reported" stroke="#000000" dot={false}/>
                             <Line dataKey="predicted cases" stroke="#aaacab" dot={false}/>
                         </LineChart>
                     </div>
@@ -678,7 +774,7 @@ const Reports = () => {
                             <YAxis tickFormatter={DataFormaterY}  domain={[0, 'dataMax']}>
                             </YAxis>
                             <Tooltip />
-                            <Line dataKey="cases" stroke="#000000" dot={false}/>
+                            <Line dataKey="cases reported" stroke="#000000" dot={false}/>
                             <Line dataKey="predicted cases" stroke="#aaacab" dot={false}/>
                         </LineChart>
                     </div>
@@ -1001,7 +1097,7 @@ const Reports = () => {
                         <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
-                        <Bar dataKey="cases" fill="#000000"/>
+                        <Bar dataKey="cases reported" fill="#000000"/>
                         <Bar dataKey="predicted cases" fill="#aaacab"/>
                     </BarChart>
                     </div>
@@ -1036,7 +1132,7 @@ const Reports = () => {
                         <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
-                        <Line dataKey="cases" stroke="#000000" dot={false}/>
+                        <Line dataKey="cases reported" stroke="#000000" dot={false}/>
                         <Line dataKey="predicted cases" stroke="#aaacab" dot={false}/>
                     </LineChart>
                     </div>
@@ -1071,7 +1167,7 @@ const Reports = () => {
                         <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
-                        <Bar dataKey="cases" fill="#000000"/>
+                        <Bar dataKey="cases reported" fill="#000000"/>
                         <Bar dataKey="predicted cases" fill="#aaacab"/>
                     </BarChart>
                     </div>
@@ -1106,7 +1202,7 @@ const Reports = () => {
                         <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                         </YAxis>
                         <Tooltip />
-                        <Line dataKey="cases" stroke="#000000" dot={false}/>
+                        <Line dataKey="cases reported" stroke="#000000" dot={false}/>
                         <Line dataKey="predicted cases" stroke="#aaacab" dot={false}/>
                     </LineChart>
                     </div>
@@ -1183,7 +1279,7 @@ const Reports = () => {
                             <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                             </YAxis>
                             <Tooltip />
-                            <Bar dataKey="cases" fill="#000000"/>
+                            <Bar dataKey="cases reported" fill="#000000"/>
                             <Bar dataKey="predicted cases" fill="#aaacab"/>
                         </BarChart>
                     </div>
@@ -1196,7 +1292,7 @@ const Reports = () => {
                             {/* <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/> */}
                             </YAxis>
                             <Tooltip />
-                            <Bar dataKey="cases" fill="#000000"/>
+                            <Bar dataKey="cases reported" fill="#000000"/>
                             <Bar dataKey="predicted cases" fill="#aaacab"/>
                         </BarChart>
                     </div>
@@ -1209,7 +1305,7 @@ const Reports = () => {
                             {/* <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/> */}
                             </YAxis>
                             <Tooltip />
-                            <Bar dataKey="cases" fill="#000000"/>
+                            <Bar dataKey="cases reported" fill="#000000"/>
                             <Bar dataKey="predicted cases" fill="#aaacab"/>
                         </BarChart>
                     </div>
@@ -1222,7 +1318,7 @@ const Reports = () => {
                             {/* <Label value="Daily cases/100K" position="insideBottomLeft" offset={10} angle={-90}/> */}
                             </YAxis>
                             <Tooltip />
-                            <Bar dataKey="cases" fill="#000000"/>
+                            <Bar dataKey="cases reported" fill="#000000"/>
                             <Bar dataKey="predicted cases" fill="#aaacab"/>
                         </BarChart>
                     </div>
@@ -1298,7 +1394,7 @@ const Reports = () => {
                             <Label value="cases reported" position="insideBottomLeft" offset={10} angle={-90}/>
                             </YAxis>
                             <Tooltip />
-                            <Line dataKey="cases" stroke="#000000" dot={false}/>
+                            <Line dataKey="cases reported" stroke="#000000" dot={false}/>
                             <Line dataKey="predicted cases" stroke="#aaacab" dot={false}/>
                         </LineChart>
                     </div>
@@ -1310,7 +1406,7 @@ const Reports = () => {
                             <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                             </YAxis>
                             <Tooltip />
-                            <Line dataKey="cases" stroke="#000000" dot={false}/>
+                            <Line dataKey="cases reported" stroke="#000000" dot={false}/>
                             <Line dataKey="predicted cases" stroke="#aaacab" dot={false}/>
                         </LineChart>
                     </div>
@@ -1322,7 +1418,7 @@ const Reports = () => {
                             <YAxis tickFormatter={DataFormaterY} domain={[0, 'dataMax']}>
                             </YAxis>
                             <Tooltip />
-                            <Line dataKey="cases" stroke="#000000" dot={false}/>
+                            <Line dataKey="cases reported" stroke="#000000" dot={false}/>
                             <Line dataKey="predicted cases" stroke="#aaacab" dot={false}/>
                         </LineChart>
                     </div>
@@ -1334,7 +1430,7 @@ const Reports = () => {
                             <YAxis tickFormatter={DataFormaterY}  domain={[0, 'dataMax']}>
                             </YAxis>
                             <Tooltip />
-                            <Line dataKey="cases" stroke="#000000" dot={false}/>
+                            <Line dataKey="cases reported" stroke="#000000" dot={false}/>
                             <Line dataKey="predicted cases" stroke="#aaacab" dot={false}/>
                         </LineChart>
                     </div>
@@ -1349,6 +1445,8 @@ const Reports = () => {
                         </div>
             </div>}
            </div>}
+           <RiInformationLine size={30}/>
+           <p>The "cases reported" data on this site is automated and provided by the <a href="https://www.vdh.virginia.gov/" target = "_blank">Virginia Department of Health</a></p>
         </div>
     )
 }
