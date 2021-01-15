@@ -22,9 +22,11 @@ A COVID-19 wastewater tracker for the Charlottesville and Hampton Roads areas of
 ## Install and Run
 
 Install npm:
+
     npm install
 
 Run the project locally:
+    
     npm start
 
 <hr></hr>
