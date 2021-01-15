@@ -1,6 +1,6 @@
 # Covid Wastewater at UVA
 
-A COVID-19 wastewater tracker for the Charlottesville and Hampton Roads areas of Virginia. This site predicts the reported cases in a day based on wastewater primary sludge samples collected in multiple locations by the University of Virginia. The predicted cases for each day are compared side by side with date collected from the Virginia Department of Health (VDH). 
+A COVID-19 wastewater tracker for the Charlottesville and Hampton Roads areas of Virginia. This site predicts the reported cases in a day based on wastewater primary sludge samples collected in multiple locations by the University of Virginia. The predicted cases for each day are compared side by side with data collected from the Virginia Department of Health (VDH). 
 
 ## Live Demo Link
 

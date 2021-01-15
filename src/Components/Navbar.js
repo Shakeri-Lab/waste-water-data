@@ -37,7 +37,7 @@ function Navbar() {
             </Link>
             <p style={{margin: 8, color: '#2e3d82', cursor: "pointer"}}
             onClick = {() => {
-              window.open("https://hemanshakerilab.herokuapp.com") 
+              window.open("https://shakerilab.herokuapp.com") 
             }}
             ><strong>Lab Website</strong></p>
           </ReactBootstrap.Nav>

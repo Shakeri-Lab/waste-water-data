@@ -40,7 +40,7 @@ const Footer = () => {
                             </li>
                             <li>
                                 <CgWebsite size={20}/>
-                                <a target="_blank" style={{margin: 10, color: 'rgba(85, 85, 85, 1)'}} href={"https://hemanshakerilab.herokuapp.com/"}>Shakeri Lab Website</a>
+                                <a target="_blank" style={{margin: 10, color: 'rgba(85, 85, 85, 1)'}} href={"https://shakerilab.herokuapp.com/"}>Shakeri Lab Website</a>
                             </li>
                             <li style={{marginTop: 30}}>Site built by Noah Beamon</li>
                             <li>
