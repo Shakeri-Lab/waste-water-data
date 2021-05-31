@@ -4,7 +4,7 @@ A COVID-19 wastewater tracker for the Charlottesville and Hampton Roads areas of
 
 ## Live Demo Link
 
-<a href="https://covidwastewateratuva.herokuapp.com/">demo</a>
+The live demo link for this site is no longer available. This project has been migrated to the main site in production. To run this project locally, follow the installation steps below. 
 
 ## Features
 
